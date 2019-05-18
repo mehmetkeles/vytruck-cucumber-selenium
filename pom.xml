@@ -125,7 +125,7 @@
 
                             <jsonFiles>
                                 <!-- supports wildcard or name pattern -->
-                                <param>**/cucumber.json</param>
+                                <param>**/*.json</param>
                             </jsonFiles>
                             <classificationFiles>
                                 <!-- supports wildcard or name pattern -->
