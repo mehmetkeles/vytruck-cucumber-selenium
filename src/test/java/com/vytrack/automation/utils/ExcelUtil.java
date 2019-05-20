@@ -1,4 +1,9 @@
 package com.vytrack.automation.utils;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.poi.ss.usermodel.*;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -6,16 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-
 public class ExcelUtil {
     private Sheet workSheet;
     private Workbook workBook;
     private String path;
+    private static final Logger LOGGER = LogManager.getLogger(Driver.class);
 
     public ExcelUtil(String path, String sheetName) {
         this.path = path;
@@ -27,6 +27,7 @@ public class ExcelUtil {
             workSheet = workBook.getSheet(sheetName);
 
         } catch (Exception e) {
+            LOGGER.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -38,6 +39,7 @@ public class ExcelUtil {
             String cellData = cell.toString();
             return cellData;
         } catch (Exception e) {
+            LOGGER.error(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -107,7 +109,9 @@ public class ExcelUtil {
 
             fileOut.close();
         } catch (Exception e) {
+            LOGGER.error(e.getMessage());
             e.printStackTrace();
+            throw new RuntimeException("Unable to set cell value.");
         }
     }
 
