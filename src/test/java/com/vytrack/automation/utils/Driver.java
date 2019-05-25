@@ -1,8 +1,8 @@
 package com.vytrack.automation.utils;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,9 +12,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Driver {
     private static final Logger LOGGER = LogManager.getLogger(Driver.class);
@@ -52,16 +52,7 @@ public class Driver {
                 case "chrome":
                     System.out.println("----Chrome----");
                     WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--disable-popup-blocking");
-                    options.addArguments("start-maximized");
-                    options.addArguments("test-type");
-                    options.addArguments("allow-running-insecure-content");
-                    options.addArguments("disable-extensions");
-                    options.addArguments("--ignore-certificate-errors");
-                    options.addArguments("test-type=browser");
-                    options.addArguments("disable-infobars");
-                    driver = new ChromeDriver(options);
+                    driver = new ChromeDriver(getChromeOptions());
                     break;
                 case "edge":
                     WebDriverManager.edgedriver().setup();
@@ -75,7 +66,7 @@ public class Driver {
                     DesiredCapabilities capabilities = new DesiredCapabilities().chrome();
                     capabilities.setPlatform(Platform.ANY);
                     try {
-                        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+                        driver = new RemoteWebDriver(new URL(ConfigurationReader.getProperty("huburl")), capabilities);
                     } catch (MalformedURLException e) {
                         LOGGER.error(e.getMessage());
                         throw new RuntimeException(e.getMessage());
@@ -105,5 +96,18 @@ public class Driver {
             driver.quit();
             driver = null;
         }
+    }
+
+    public static ChromeOptions getChromeOptions(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("start-maximized");
+        options.addArguments("test-type");
+        options.addArguments("allow-running-insecure-content");
+        options.addArguments("disable-extensions");
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("test-type=browser");
+        options.addArguments("disable-infobars");
+        return options;
     }
 }

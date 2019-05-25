@@ -13,7 +13,7 @@ public class HomePage {
     private static final Logger LOGGER = LogManager.getLogger(Driver.class);
 
 
-    @FindBy(css = "h1[class='logo logo-text'] > a")
+    @FindBy(id = "pagetitle")
     private WebElement titleelement;
 
     public HomePage() {
@@ -23,7 +23,7 @@ public class HomePage {
     public void verifyTitleDisplays(String title) {
         SeleniumUtils.waitForPageToLoad(10);
         SeleniumUtils.waitForElement(titleelement);
-        String actualTitle = titleelement.getAttribute("title");
+        String actualTitle = titleelement.getText();
         try {
             Assert.assertEquals(title, actualTitle);
         } catch (Exception e) {

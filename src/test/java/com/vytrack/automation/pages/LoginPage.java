@@ -16,13 +16,13 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id = "prependedInput")
+    @FindBy(css = "input[placeholder='Login']")
     private WebElement usernameelement;
 
-    @FindBy(id = "prependedInput2")
+    @FindBy(css = "input[placeholder='Password']")
     private WebElement passwordelement;
 
-    @FindBy(id = "_submit")
+    @FindBy(css = "input[value='Log In']")
     private WebElement loginbuttonelement;
 
     public void login(String userName, String password) {
@@ -39,8 +39,8 @@ public class LoginPage {
     public void login() {
         String username = ConfigurationReader.getProperty("username" + ConfigurationReader.getProperty("environment"));
         String password = ConfigurationReader.getProperty("password" + ConfigurationReader.getProperty("environment"));
-        LOGGER.info("User name: "+username);
-        LOGGER.info("User password: "+password);
+        System.out.println("User name: "+username);
+        System.out.println("User password: "+password);
         SeleniumUtils.waitForVissibilityOfElement(usernameelement);
         usernameelement.clear();
         usernameelement.sendKeys(username);
