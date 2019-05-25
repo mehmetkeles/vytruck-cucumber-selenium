@@ -9,8 +9,8 @@ public class LoginPageStepDefinition {
     LoginPage loginpage = new LoginPage();
     HomePage homepage = new HomePage();
 
-    @Given("user is on the nextbase sign-in page")
-    public void user_is_on_the_nextbase_sign_in_page() {
+    @Given("user is on the vytrack sign-in page")
+    public void user_is_on_the_vytrack_sign_in_page() {
         loginpage.goToHomePage();
     }
 
