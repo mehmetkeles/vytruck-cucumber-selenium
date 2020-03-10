@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="8.828815">
+<testcase classname="Smoke test" name="Smoke test" time="8.828815">
+<system-out><![CDATA[Given user is on the vytrack sign-in page...................................passed
+And user logs in as an admin................................................passed
+Then user verifies that "Fleet Management" title displays...................passed
+]]></system-out>
+</testcase>
+</testsuite>

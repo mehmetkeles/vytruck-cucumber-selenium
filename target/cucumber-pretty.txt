@@ -1,0 +1,7 @@
+Feature: Smoke test
+
+  @Smoke
+  Scenario: Smoke test                                        # src/test/resources/features/SmokeTest.feature:4
+    Given user is on the vytrack sign-in page                 # LoginPageStepDefinition.user_is_on_the_vytrack_sign_in_page()
+    And user logs in as an admin                              # LoginPageStepDefinition.user_logs_in_as_an_admin()
+    Then user verifies that "Fleet Management" title displays # LoginPageStepDefinition.user_verifies_that_title_displays(String)

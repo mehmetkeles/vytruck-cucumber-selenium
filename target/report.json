@@ -1,0 +1,92 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 3163263595,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.suiteSetup(Scenario)"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "Smoke test",
+        "description": "",
+        "id": "smoke-test;smoke-test",
+        "after": [
+          {
+            "result": {
+              "duration": 183142824,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hook.suiteTearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 934049797,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "user is on the vytrack sign-in page",
+            "match": {
+              "location": "LoginPageStepDefinition.user_is_on_the_vytrack_sign_in_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 4426014720,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "user logs in as an admin",
+            "match": {
+              "location": "LoginPageStepDefinition.user_logs_in_as_an_admin()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 120242314,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "user verifies that \"Fleet Management\" title displays",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Fleet Management\"",
+                  "offset": 19
+                }
+              ],
+              "location": "LoginPageStepDefinition.user_verifies_that_title_displays(String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Smoke"
+          }
+        ]
+      }
+    ],
+    "name": "Smoke test",
+    "description": "",
+    "id": "smoke-test",
+    "keyword": "Feature",
+    "uri": "src/test/resources/features/SmokeTest.feature",
+    "tags": []
+  }
+]
